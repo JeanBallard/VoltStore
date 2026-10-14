@@ -1,0 +1,236 @@
+<!-- VoltStore: структура страниц магазина, ресейла и админ-панели -->
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+  <title>
+   VoltStore — смартфоны, сравнение и ресейл
+  </title>
+  <meta content="VoltStore — сравнение смартфонов, каталог флагманов и ресейл с отзывами продавцов. Демонстрационный проект." name="description"/>
+  <meta content="#0a0d14" name="theme-color"/>
+  <link href="styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div id="shop">
+   <header class="glass">
+    <div class="nav">
+     <div class="logo">
+      VOLTSTORE
+     </div>
+     <nav>
+      <a href="#catalog">
+       Каталог
+      </a>
+      <a href="#resale">
+       Ресейл ↗
+      </a>
+      <button class="pillbtn" data-a="cmp">
+       ⇄ Сравнение
+       <b id="nCmp">
+        0
+       </b>
+      </button>
+     </nav>
+     <button class="pillbtn" data-a="acct" id="acctBtn">
+      👤 Войти
+     </button>
+     <button class="pillbtn" data-a="cart">
+      🛒
+      <b id="nCart">
+       0
+      </b>
+     </button>
+    </div>
+   </header>
+   <main class="wrap">
+    <div class="hero">
+     <span class="eyebrow">
+      <span class="pulse">
+      </span>
+      VOLTSTORE · ПРОЕКТ ИЗ КАЗАХСТАНА
+     </span>
+     <h1>
+      Твой следующий
+      <br/>
+      <span>
+       смартфон — здесь.
+      </span>
+     </h1>
+     <p>
+      Сравнивай флагманы, выбирай по характеристикам и изучай предложения на вторичном рынке — в одном месте.
+     </p>
+     <div class="hero-actions">
+      <a class="btn primary" href="#catalog">
+       Смотреть смартфоны
+       <span aria-hidden="true">
+        ↗
+       </span>
+      </a>
+      <a class="btn" href="#resale">
+       Исследовать ресейл →
+      </a>
+     </div>
+     <div class="hero-metrics">
+      <div>
+       <b>
+        11
+       </b>
+       <span>
+        моделей в каталоге
+       </span>
+      </div>
+      <div>
+       <b>
+        3
+       </b>
+       <span>
+        смартфона в сравнении
+       </span>
+      </div>
+      <div>
+       <b>
+        ₸
+       </b>
+       <span>
+        цены в тенге
+       </span>
+      </div>
+     </div>
+    </div>
+
+    <!-- Основные возможности из презентации проекта -->
+    <section class="features" id="features" aria-labelledby="featuresTitle">
+      <div class="section-intro"><span class="section-kicker">ВСЁ В ОДНОМ МЕСТЕ</span><h2 id="featuresTitle">От выбора до выгодной сделки</h2><p class="sub">Три основных сценария VoltStore: подобрать модель, сравнить характеристики и найти б/у вариант.</p></div>
+      <div class="feature-grid">
+        <a class="feature-card" href="#catalog"><span class="feature-icon">01 / ◈</span><h3>Каталог флагманов</h3><p>Фильтрация по бренду, назначению и бюджету. Плюсы, минусы и подробные характеристики.</p><span class="feature-link">Выбрать смартфон ↗</span></a>
+        <button class="feature-card feature-button" data-a="cmp"><span class="feature-icon">02 / ⇄</span><h3>Сравнение моделей</h3><p>До трёх устройств рядом: дисплей, камера, автономность, процессор и цена.</p><span class="feature-link">Открыть сравнение ↗</span></button>
+        <a class="feature-card" href="#resale"><span class="feature-icon">03 / ↗</span><h3>VoltResale</h3><p>Объявления частных продавцов, история отзывов, профиль и демонстрационный чат.</p><span class="feature-link">Смотреть объявления ↗</span></a>
+      </div>
+    </section>
+    <section id="catalog">
+     <h2>
+      Флагманы 2025–2026
+     </h2>
+     <p class="sub">
+      Открой карточку — увидишь все характеристики и что ещё можно взять за такие же деньги.
+     </p>
+     <div class="tools">
+      <input id="q" placeholder="Поиск: iPhone, Samsung, Xiaomi…"/>
+      <span class="row" id="types" style="flex:none">
+       <button class="btn" data-a="ty" data-k="g">
+        🎮 Игровые
+       </button>
+       <button class="btn" data-a="ty" data-k="c">
+        📷 Камерафоны
+       </button>
+       <button class="btn" data-a="ty" data-k="h">
+        ⚡ Гибрид
+       </button>
+      </span>
+      <select id="brand">
+       <option value="">
+        Все бренды
+       </option>
+      </select>
+      <select id="sort">
+       <option value="0">
+        Рекомендуемые
+       </option>
+       <option value="1">
+        Цена ↑
+       </option>
+       <option value="2">
+        Цена ↓
+       </option>
+       <option value="3">
+        Рейтинг
+       </option>
+      </select>
+     </div>
+     <div class="catalog-more"><label class="budget-control" for="maxPrice">Бюджет до <strong id="priceValue">1 300 000 ₸</strong><input id="maxPrice" type="range" min="300000" max="1300000" step="25000" value="1300000"></label><div class="filter-actions"><span id="resultCount" role="status" aria-live="polite"></span><button class="btn" id="resetFilters" type="button">Сбросить фильтры ↺</button></div></div>
+     <div class="grid" id="grid">
+     </div>
+    </section>
+    <section id="trust" class="trust-section"><div class="section-intro"><span class="section-kicker">БЕЗОПАСНАЯ ПОКУПКА</span><h2>На что смотреть при покупке б/у?</h2><p class="sub">Отзывы помогают сориентироваться, но не заменяют проверку устройства лично.</p></div><div class="trust-grid"><div class="trust-step"><b>01</b><h3>Проверь устройство</h3><p>IMEI, блокировки активации, экран, камеру, аккумулятор и связь.</p></div><div class="trust-step"><b>02</b><h3>Изучи продавца</h3><p>Отзывы, описание, комплектацию и историю использования телефона.</p></div><div class="trust-step"><b>03</b><h3>Не спеши с оплатой</h3><p>Встречайся в безопасном месте и не отправляй предоплату незнакомым людям.</p></div></div><p class="demo-disclaimer">Важно: VoltStore — учебный прототип. Продавцы и отзывы в примерах демонстрационные; проверка личности и безопасная сделка платформой пока не обеспечиваются.</p></section>
+    <section class="roadmap-section" id="roadmap"><div class="section-intro"><span class="section-kicker">ПЛАН РАЗВИТИЯ</span><h2>От MVP к полноценному сервису</h2></div><div class="roadmap-grid"><div class="roadmap-item"><span>02 · ПЛАН</span><h3>Supabase</h3><p>PostgreSQL, серверная авторизация, роли и правила доступа.</p></div><div class="roadmap-item"><span>03 · ПЛАН</span><h3>Реальные сделки</h3><p>Загрузка фото, платежи, доставка и модерация.</p></div></div></section>
+   </main>
+   <footer>
+    © VoltStore · 2026 · Учебный прототип · Демонстрационные цены и оплата ·
+    <a href="#admin" style="color:inherit">
+     Админ
+    </a>
+   </footer>
+  </div>
+  <div hidden="" id="rs">
+   <header class="glass">
+    <div class="rsh">
+     <div class="logo">
+      VOLTRESALE
+     </div>
+     <a class="btn" href="#catalog">
+      ← В магазин
+     </a>
+     <button class="btn" data-a="rlist">
+      Объявления
+     </button>
+     <button class="btn" data-a="inbox">
+      💬 Чаты
+      <span class="nb" hidden="" id="nChat">
+       0
+      </span>
+     </button>
+     <button class="btn" data-a="prof" data-id="me">
+      👤 Профиль
+     </button>
+     <button class="btn primary" data-a="pub">
+      ＋ Подать объявление
+     </button>
+    </div>
+   </header>
+   <main class="wrap" id="rsMain">
+   </main>
+  </div>
+  <div hidden="" id="adm">
+   <header class="glass">
+    <div class="rsh">
+     <div class="logo">
+      VOLT ADMIN
+     </div>
+     <a class="btn" href="#catalog">
+      ← На сайт
+     </a>
+     <button class="btn" data-a="logout" hidden="" id="admOut">
+      Выйти
+     </button>
+    </div>
+   </header>
+   <main class="wrap" id="admMain">
+   </main>
+  </div>
+  <div class="glass" id="cmpbar">
+   <b id="cmpTxt">
+   </b>
+   <button class="btn primary" data-a="cmp">
+    Сравнить
+   </button>
+   <button class="btn" data-a="cmpclear">
+    Очистить
+   </button>
+  </div>
+  <div id="ov">
+  </div>
+  <div aria-modal="true" class="glass" id="modal" role="dialog">
+  </div>
+  <div id="toast">
+  </div>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js">
+  </script>
+  <script defer="" src="config.js">
+  </script>
+  <script defer="" src="app.js">
+  </script>
+  <script defer="" src="live.js">
+  </script>
+ </body>
+</html>
